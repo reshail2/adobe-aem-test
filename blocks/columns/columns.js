@@ -2,6 +2,9 @@ export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 
+  const metadata = block.closest('.section').dataset;
+  const { title, subtitle } = metadata;
+
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
@@ -15,4 +18,5 @@ export default function decorate(block) {
       }
     });
   });
+  block.innerHTML = `<div><h1>${title.innerHTML}</h1> <p>${subtitle.innerHTML}</p> ${image.innerHTML}</div>`
 }
