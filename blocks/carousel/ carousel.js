@@ -1,7 +1,7 @@
 export default function decorate(block) {
+  document.querySelector('.carousel-wrapper').classList.add('carousel');
   document.querySelector('.carousel').classList.remove('carousel-wrapper');
   document.querySelector('.carousel').classList.add('carousel-inner');
-  document.querySelector('.carousel-wrapper').classList.add('carousel');
 
   [...block.children].forEach((row, i) => {
     row.classList.add('carousel-item');
@@ -10,6 +10,7 @@ export default function decorate(block) {
     }
     [...row.children].forEach((col) => {
       col.children[1].style = 'position: absolute; left: 0; top: 0;';
+      col.children[1].classList.add('text-white');
     });
   });
 }
